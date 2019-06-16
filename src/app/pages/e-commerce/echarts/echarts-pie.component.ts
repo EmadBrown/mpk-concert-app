@@ -44,9 +44,9 @@ export class EchartsPieComponent implements AfterViewInit {
                 radius: '80%',
                 center: ['50%', '50%'],
                 data: [
-                  { value: data.totalVisitors - data.totalInEvent - data.totalInCamping, name: 'Out' },
-                  { value: data.totalInEvent, name: 'Concert' },
-                  { value: data.totalInCamping, name: 'Camping' },
+                  { value: data.totalVisitors - data.totalInEvent - data.totalInCamping, name: 'Out Of Event' },
+                  { value: data.totalInEvent, name: 'In Concert' },
+                  { value: data.totalInCamping, name: 'In Camping' },
                 ],
                 itemStyle: {
                   emphasis: {
