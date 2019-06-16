@@ -12,7 +12,7 @@ const httpOptions = {
 })
 export class VisitorService {
 
-  apiURL: string ='http://localhost:4200/api/register';
+  apiURL: string ='http://i410456.hera.fhict.nl/api/register';
 
   constructor(private httpClient: HttpClient) { }
 

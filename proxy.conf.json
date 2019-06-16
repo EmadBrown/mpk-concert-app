@@ -1,6 +1,6 @@
 {
   "/api/login": {
-    "target": "http://localhost/mpk/api/login.php",
+    "target": "http://i410456.hera.fhict.nl/api/login.php",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true,
@@ -10,7 +10,7 @@
   },
 
   "/api/register": {
-    "target": "http://localhost/mpk/api/create_user.php",
+    "target": "http://i410456.hera.fhict.nl/api/register.php",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true,

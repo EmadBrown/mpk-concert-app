@@ -47,7 +47,7 @@ const routes: Routes = [{
   // },
   {
     path: 'tables',
-    loadChildren: () => TablesModule
+    loadChildren: './tables/tables.module#TablesModule'
   },
   // {
   //   path: 'miscellaneous',

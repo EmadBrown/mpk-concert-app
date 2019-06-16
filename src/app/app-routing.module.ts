@@ -6,11 +6,11 @@ import { PagesModule } from '../app/pages/pages.module';
 
 const routes: Routes = [
   {
-    path: 'home', loadChildren: () => SiteModule,
+    path: 'home', loadChildren: '../app/site/site.module#SiteModule', 
   },
 
   {
-    path: 'pages', loadChildren: () => PagesModule,
+    path: 'pages', loadChildren: '../app/pages/pages.module#PagesModule', 
     canActivate: [AuthGuard],
   },
 

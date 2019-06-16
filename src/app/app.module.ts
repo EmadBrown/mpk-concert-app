@@ -73,14 +73,14 @@ import { RoleProvider } from './role.provider'
             key: 'jwt', // this parameter tells where to look for the token
           },
 
-          baseEndpoint: 'http://localhost:4200/api',
+          baseEndpoint: 'http://i410456.hera.fhict.nl/api/',
 
           login: {
-            endpoint: '/login',
+            endpoint: 'login.php',
             method: 'post',
           },
           register: {
-            endpoint: '/register',
+            endpoint: 'register.php',
             method: 'post',
             redirect: {
               success: 'home',

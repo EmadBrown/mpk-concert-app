@@ -128,7 +128,7 @@ export class SmartTableComponent implements OnInit {
 
   visitor: boolean = true;
   sale: boolean = false;
-  Souvenir: boolean = false;
+  souvenir: boolean = false;
   constructor(
     private getdata: DataService) {
 

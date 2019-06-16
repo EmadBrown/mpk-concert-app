@@ -11,7 +11,7 @@ const httpOptions = {
 })
 export class DashboardService {
 
-  apiURL: string = 'http://localhost/mpk/api/dashboard.php';
+  apiURL: string = 'http://i410456.hera.fhict.nl/api/dashboard.php';
 
   constructor(private httpClient: HttpClient) { }
 

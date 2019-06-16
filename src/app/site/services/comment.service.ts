@@ -10,7 +10,7 @@ const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/js
 })
 export class CommentService {
 
-  apiURL: string = 'http://localhost/mpk/api/comment.php';
+  apiURL: string = 'http://i410456.hera.fhict.nl/api/comment.php';
 
   constructor(private httpClient: HttpClient) { }
 

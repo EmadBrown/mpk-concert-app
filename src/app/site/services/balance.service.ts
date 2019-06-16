@@ -11,7 +11,7 @@ const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/js
 })
 export class BalanceService {
 
-  apiURL: string = 'http://localhost/mpk/api/balance.php';
+  apiURL: string = 'http://i410456.hera.fhict.nl/api/balance.php';
 
   constructor(private httpClient: HttpClient) { }
 

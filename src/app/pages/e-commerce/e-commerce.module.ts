@@ -54,6 +54,7 @@ import { EchartsAreaStackComponent } from './echarts/echarts-area-stack.componen
 import { EchartsBarAnimationComponent } from './echarts/echarts-bar-animation.component';
 import { EchartsRadarComponent } from './echarts/echarts-radar.component';
 
+import { D3Component } from './d3/d3.component';
 import { D3BarComponent } from './d3/d3-bar.component';
 import { D3LineComponent } from './d3/d3-line.component';
 import { D3PieComponent } from './d3/d3-pie.component';
@@ -109,6 +110,7 @@ import { D3AdvancedPieComponent } from './d3/d3-advanced-pie.component';
     EchartsAreaStackComponent,
     EchartsBarAnimationComponent,
     EchartsRadarComponent,
+    D3Component,
     D3BarComponent,
     D3LineComponent,
     D3PieComponent,
