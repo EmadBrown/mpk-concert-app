@@ -1,0 +1,21 @@
+{
+  "/api/login": {
+    "target": "http://localhost/mpk/api/login.php",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  },
+
+  "/api/register": {
+    "target": "http://localhost/mpk/api/create_user.php",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

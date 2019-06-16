@@ -1,0 +1,48 @@
+<div class="row my-2">
+  <div class="col">
+    <button class="btn m-2" [ngClass]="visitor? 'btn-success' : 'btn-outline-success'" (click)="visitor = true; sale = false ; souvenir = false">Visitors
+      Table</button>
+    <button class="btn btn-outline-success m-2" (click)="visitor = false; sale = true ; souvenir = false">Sales
+      Table</button>
+    <button class="btn btn-outline-success m-2" (click)="visitor = false; sale = false ; souvenir = true">Souvenires
+      Table</button>
+  </div>
+</div>
+<nb-card *ngIf="visitor">
+  <nb-card-header>
+    <h3>
+      Visitors Table
+    </h3>
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settingsVisitors" [source]="sourceVisitor" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+
+<nb-card *ngIf="sale">
+  <nb-card-header>
+    <h3>
+      Sale Shops Table
+    </h3>
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settingsSales" [source]="sourceSales" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+
+<nb-card *ngIf="souvenir">
+  <nb-card-header>
+    <h3>
+      Sale Shops Table
+    </h3>
+  </nb-card-header> 
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settingsSouvenir" [source]="sourceSouvenir" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

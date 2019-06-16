@@ -1,0 +1,72 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-5 left-wrapper">
+      <div class="event-banner-wrapper">
+        <div class="logo">
+          <h1>MPK</h1>
+        </div>
+        <h2>
+          MPK <br />Molecaten Park Kuierpad Rocks
+          <span>18 June 2019, 9:00 PM</span>
+        </h2>
+        <p>Created by <a href="#" target="_blank">M.E.A.N.Prop</a></p>
+      </div>
+    </div>
+
+    <div class="col-sm-7 right-wrapper">
+      <div class="event-ticket-wrapper">
+        <div class="event-tab">
+
+          <div id="navbar" class="event-tab">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs shadow p-3 justify-content-end">
+              <ng-container *ngIf="!checkAuth; else authentication">
+                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                  <a routerLink="buyTickets" class="nav-link" href="#">Buy Tickets </a>
+                </li>
+
+                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                  <a routerLink="conditions" class="nav-link" href="#">Terms & conditions</a>
+                </li>
+                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                  <a routerLink="contact" class="nav-link" href="#">Concert Reviews</a>
+                </li>
+
+                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                  <a routerLink="login" class="nav-link" href="#">login</a>
+                </li>
+              </ng-container>
+
+              <ng-template #authentication>
+                <li *ngIf="userRole == 'user'" [routerLinkActive]="['active']"
+                  [routerLinkActiveOptions]="{ exact: true }">
+                  <a routerLink="balance" class="nav-link" href="#">Your Balance</a>
+                </li>
+                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                  <a routerLink="contact" class="nav-link" href="#">Add Review</a>
+                </li>
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                  <a routerLink="login" (click)="logout()" class="nav-link" href="#">logout</a>
+                </li>
+                <li>
+                  <nb-actions size="medium" [class.right]="position === 'normal'" [class.left]="position === 'inverse'">
+                    <nb-action>
+                      <nb-user [nbContextMenu]="userMenu" nbContextMenuTag="my-context-menu"
+                        [name]="user?.firstName + ' ' +user?.lastName " [picture]="user?.picture"></nb-user>
+                    </nb-action>
+                  </nb-actions>
+                </li>
+              </ng-template>
+            </ul>
+          </div>
+
+          <!-- Tab panes -->
+          <router-outlet></router-outlet>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nb-layout style="display: none"></nb-layout>

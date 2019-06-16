@@ -1,0 +1,25 @@
+.pb-cmnt-container {
+    font-family: Lato;
+    margin-top: 100px;
+  }
+  
+  .shadow {
+    -webkit-box-shadow: -1px 11px 37px -8px rgba(0, 0, 0, 0.36);
+    -moz-box-shadow: -1px 11px 37px -8px rgba(0, 0, 0, 0.36);
+    box-shadow: -1px 11px 37px -8px rgba(0, 0, 0, 0.36);
+  }
+  
+  .pb-cmnt-textarea {
+    resize: none;
+    padding: 20px;
+    height: 80px;
+    width: 100%;
+    border: 1px solid #f2f2f2;
+  }
+  
+  .avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }

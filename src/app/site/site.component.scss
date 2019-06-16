@@ -1,0 +1,48 @@
+@import'./../../assets/css/custom.css';
+
+#navbar{
+    margin-bottom: 2rem;
+}
+
+/* media query for tab */
+@media (min-width: 767px) {
+    #navbar {
+        margin-bottom: 6rem;
+    }
+}
+.shadow{
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+
+.left-wrapper,
+.right-wrapper {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}

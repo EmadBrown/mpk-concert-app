@@ -1,0 +1,215 @@
+<nb-card accent="info" *ngIf="!join">
+  <nb-card-header>
+    <h1>Do you want to have a good time?</h1>
+  </nb-card-header>
+  <nb-card-body>
+    <p>
+      Join us and we guarantee you will! We promise you the loudest music and an amazing atmosphere! You will be able to
+      see and hear some of the greatest rock bands of all time! Grab a drink, call some friends and have a fun weekend!
+      Wanna join? Buy a ticket now!
+    </p>
+
+    <div class="my-5">
+      <h3 class="text-center my-5">
+        Wanna join? Buy a ticket now!
+      </h3>
+      <button nbButton (click)="join= !join" class="btn-block" style="font-size: 2rem;"> Join </button>
+    </div>
+  </nb-card-body>
+</nb-card>
+<div *ngIf="join" class="steppers-container row">
+  <div class="col-md-12" *ngIf="totalTicket == 0">
+    <nb-card accent="info">
+      <nb-card-header>
+        <h2>Note:</h2>
+        <ul>
+          <li>
+            You can pay the balance for up to 6 tickets in one transaction.
+          </li>
+        </ul>
+      </nb-card-header>
+    </nb-card>
+  </div>
+
+  <div class="col-md-12">
+    <div class="p-2">
+      <button (click)="join= !join; reset()" class="btn btn-block btn-outline-danger"> Cancel </button>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-body>
+        <nb-stepper #stepper>
+          <nb-step [stepControl]="firstForm" label="">
+            <form class="step-container">
+              <h4 class="lorem text-left my-3">
+                Choose the number of tickets that you wish to buy.
+              </h4>
+              <div class="d-flex justify-content-between">
+                <button type="button"
+                  (click)="totalTicket = totalTicket < 6? totalTicket + 1 : totalTicket; onChangeTickets() "
+                  class="btn btn-primary btn-icon">
+                  <i class="fas fa-plus"></i>
+                </button>
+                <button type="button" (click)="totalTicket = totalTicket - 1; onChangeTickets() "
+                  [disabled]="totalTicket == 0" class="btn btn-danger btn-icon">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+              <div class="d-flex justify-content-center">
+                <h1>{{totalTicket}} {{totalTicket > 1? 'Tickets' : 'Ticket'}}</h1>
+              </div>
+              <div class="">
+                <h4>Ticket Price: € {{ticketPrice}} </h4>
+              </div>
+              <div class="input-group my-3">
+                <button nbButton nbStepperNext class="btn-block" [disabled]="totalTicket == 0"
+                  style="font-size: 1.5rem;">next</button>
+              </div>
+            </form>
+          </nb-step>
+          <nb-step [stepControl]="secondForm" label="">
+            <form class="step-container">
+              <div class="my-3">
+                <h3>Would you like to reserve a camping spot?</h3>
+                <p class="lorem text-left">
+                  Each camping spot can be shared with a total of 6 people. If you are not in a group, the camping spot
+                  is all for you!
+                </p>
+                <div class="demo-radio input-group">
+                  <nb-radio-group [(value)]="withSpot" class="d-flex">
+                    <nb-radio [value]="true">
+                      <h5> Yes, I want a spot!</h5>
+                    </nb-radio>
+                    <nb-radio [value]="false" (click)="noSpot()">
+                      <h5>No, thank you! {{Totalspot}}</h5>
+                    </nb-radio>
+                  </nb-radio-group>
+                </div>
+              </div>
+
+              <div *ngIf="withSpot" class="my-3">
+                <div class="d-flex justify-content-center">
+                  <h1>{{totalspot}} spot</h1>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <button type="button"
+                    (click)="totalspot = totalspot < totalTicket? totalspot + 1 : totalspot; onChangeSpot() "
+                    class="btn btn-primary btn-icon">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                  <button type="button" (click)="totalspot = totalspot - 1 ; onChangeSpot()" [disabled]="totalspot == 0"
+                    class="btn btn-danger btn-icon">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+
+                <h4 class="my-4">Spot Price: € {{spotPrice}} </h4>
+              </div>
+
+              <div class="d-flex justify-content-between" style="font-size: 1.5rem;">
+                <button nbButton nbStepperPrevious>prev</button>
+                <button nbButton nbStepperNext [disabled]="withSpot && totalspot == 0"
+                  (click)="onChangeSpot()">next</button>
+              </div>
+            </form>
+          </nb-step>
+
+          <nb-step [stepControl]="secondForm">
+            <form #ticketForm="ngForm" class="step-container">
+              <div class="my-3" *ngFor="let ticket of tickets; let i = index">
+                <hr>
+                <h6> Ticket {{ticket.ticketNum + 1}}</h6>
+
+                <div class="form-group">
+                  <input type="text" placeholder="Enter your first name" class="form-control"
+                    [(ngModel)]="visitor.firstName[i]" ngModel name="firstName{{i}}" #firstName="ngModel" minlength="2"
+                    maxlength="65" required>
+                  <nb-alert status="disabled" accent="danger" class="text-danger"
+                    *ngIf="!firstName.valid && firstName.touched">
+                    <span *ngIf="firstName.errors.required">First name is required.</span>
+                    <span *ngIf="firstName.errors.minlength">Please enter at least 2 characters.</span>
+                    <span *ngIf="firstName.errors.maxlength">Please enter no more than 65 characters.</span>
+                  </nb-alert>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" placeholder="Enter your last name" class="form-control"
+                    [(ngModel)]="visitor.lastName[i]" ngModel name="lastName{{i}}" #lastName="ngModel" minlength="2"
+                    maxlength="65" required>
+                  <nb-alert status="disabled" accent="danger" class="text-danger"
+                    *ngIf="!lastName.valid && lastName.touched">
+                    <span *ngIf="lastName.errors.required">Last name is required.</span>
+                    <span *ngIf="lastName.errors.minlength">Please enter at least 2 characters.</span>
+                    <span *ngIf="lastName.errors.maxlength">Please enter no more than 65 characters.</span>
+                  </nb-alert>
+                </div>
+
+                <div class="form-group" *ngIf="i == 0">
+                  <input type="email" placeholder="Enter your email address" class="form-control"
+                    [(ngModel)]="visitor.email" ngModel name="email" #email="ngModel"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                  <nb-alert status="disabled" accent="danger" class="text-danger" *ngIf="!email.valid && email.touched">
+                    <span *ngIf="email.errors.required">Email address is required.</span>
+                    <span *ngIf="email.errors.pattern">Please enter a valid e-mail address.</span>
+                  </nb-alert>
+                </div>
+
+                <div *ngIf="totalspot !=0" class="form-group d-flex justify-content-between">
+                  <h5>Ticket {{ticket.ticketNum +1}} has a spot:</h5>
+                  <ui-switch class="font-weight-bold" labelOn="Yes" labelOff="No" color="#5DCFE3"
+                    (change)="onChangeSpotSwitcher($event, ticket.ticketNum)" [checked]="ticket.checked"
+                    [disabled]="ticket.disabled">
+                  </ui-switch>
+                </div>
+              </div>
+              <div class="form-control-group accept-group">
+                <nb-checkbox name="terms" [(ngModel)]="agree" (onChange)="agree = !agree" ngModel name="agree"
+                  #condition="ngModel">
+                  I agree to
+                  <ngbd-modal-component></ngbd-modal-component>
+                </nb-checkbox>
+              </div>
+              <button nbButton nbStepperNext (click)="onSubmit()" class="btn-block" style="font-size: 1.5rem;"
+                [disabled]="(!ticketForm.valid && !ticketForm.valid ? !ticketForm.valid : !(totalChecked == totalspot)) ||  !agree">Confirm</button>
+
+            </form>
+          </nb-step>
+
+          <nb-step [stepControl]="fourthForm" [hidden]="true" label="Fourth step">
+            <div class="step-container">
+              <nb-alert outline="{{responseMessage.status? 'success' : 'danger'}}">
+                <h4 *ngIf="responseMessage.status">
+                  Ticket(s) bought successfully! Please, check the provided email for
+                  your ticket, MPK ID and password.
+                </h4>
+                <h4 *ngIf="!responseMessage.status">
+                  Oops, something went wrong, you are not able to make reservation.
+                </h4>
+              </nb-alert>
+              <button style="font-size: 1.5rem;" nbButton *ngIf="!responseMessage.status"
+                (click)="stepper.reset(); reset()" class="btn-block">Try
+                again</button>
+              <button style="font-size: 1.5rem;" nbButton *ngIf="responseMessage.status"
+                (click)="stepper.reset(); reset()" class="btn-block">Back</button>
+            </div>
+          </nb-step>
+
+        </nb-stepper>
+      </nb-card-body>
+      <nb-card-footer>
+        <div [ngClass]="totalTicket == 0? 'd-none' : '' ">
+          <h4> Total Tickets: {{totalTicket}} <span
+              class="badge badge-secondary">{{totalTicket > 1? 'tickets' : 'ticket'}}</span></h4>
+          <h4> Cost: € {{totalTicket * ticketPrice}}</h4>
+        </div>
+        <div [ngClass]="totalspot == 0? 'd-none' : '' ">
+          <h4> Total Spot: {{totalspot}} <span class="badge badge-secondary">spot</span></h4>
+          <h4> Cost: € {{totalspot * spotPrice}}</h4>
+        </div>
+        <h4>Total Cost: € {{totalTicket * ticketPrice + totalspot * spotPrice}} </h4>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+</div>
