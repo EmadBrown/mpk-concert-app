@@ -37,12 +37,12 @@ export class ECommerceProgressSectionComponent implements OnDestroy, OnInit {
 
         if (data != null)
           this.progressInfoData = [
-            { title: 'Total', value: data.totalVisitors * data.ticketPrice + data.totalSpot * data.spotPrice + data.totalLoanShop + data.totalSaleShops + data.totalSouvenirShop, activeProgress: totalPercentage, description: 'The Amount Of Earnest Money (' + (totalPercentage) + ' %) of ' + data.CapacityOfVisitors * data.ticketPrice },
-            { title: 'Tickets', value: data.totalVisitors * data.ticketPrice, activeProgress: ticketPercentage, description: data.totalVisitors + ' In Total Selling Tickets (' + (ticketPercentage) + ' %) Of ' + data.CapacityOfVisitors * data.spotPrice },
-            { title: 'Spots', value: data.totalSpot * data.spotPrice, activeProgress: spotPercentage, description: data.totalSpot + ' In Total Selling Spots (' + (spotPercentage) + ' %) Of ' + ((data.CapacityOfVisitors * data.ticketPrice) + (data.CapacityOfVisitors * data.spotPrice)) },
-            { title: 'Total Loan Shop', value: data.totalLoanShop, activeProgress: null, description: ' In Total Selling Spots' },
-            { title: 'Total Sales Shop', value: data.totalSaleShops, activeProgress: null, description: ' In Total Loan Spots' },
-            { title: 'Total Souvenir Shop', value: data.totalSouvenirShop, activeProgress: null, description: ' In Total Souvenir Spots' },
+            { title: 'Total For The Whole Event', value: data.totalVisitors * data.ticketPrice + data.totalSpot * data.spotPrice + data.totalLoanShop + data.totalSaleShops + data.totalSouvenirShop, activeProgress: totalPercentage, description: 'The amount of money (' + (totalPercentage) + ' %) of ' + data.CapacityOfVisitors * data.ticketPrice },
+            { title: 'Earned From Tickets', value: data.totalVisitors * data.ticketPrice, activeProgress: ticketPercentage, description: data.totalVisitors + ' in iotal selling tickets (' + (ticketPercentage) + ' %) of ' + data.CapacityOfVisitors * data.spotPrice },
+            { title: 'Earned From Spots', value: data.totalSpot * data.spotPrice, activeProgress: spotPercentage, description: data.totalSpot + ' in total selling spots (' + (spotPercentage) + ' %) of ' + ((data.CapacityOfVisitors * data.ticketPrice) + (data.CapacityOfVisitors * data.spotPrice)) },
+            { title: 'Earned From Loan Shop', value: data.totalLoanShop, activeProgress: null, description: '... no sales forecast' },
+            { title: 'Earned From Food & Drinks Shop', value: data.totalSaleShops, activeProgress: null, description: '... no sales forecast' },
+            { title: 'Earned From Souvenir Shop', value: data.totalSouvenirShop, activeProgress: null, description: '... no sales forecast' },
           ]
       }));
   }

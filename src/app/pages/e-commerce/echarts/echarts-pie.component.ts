@@ -32,7 +32,7 @@ export class EchartsPieComponent implements AfterViewInit {
             legend: {
               orient: 'vertical',
               left: 'right',
-              data: ['Out Of', 'Concert', 'Camping'],
+              data: ['Out Of Event', 'In Concert', 'In Camping'],
               textStyle: {
                 color: echarts.textColor,
               },
@@ -44,7 +44,7 @@ export class EchartsPieComponent implements AfterViewInit {
                 radius: '80%',
                 center: ['50%', '50%'],
                 data: [
-                  { value: data.totalVisitors - data.totalInEvent - data.totalInCamping, name: 'Out Of' },
+                  { value: data.totalVisitors - data.totalInEvent - data.totalInCamping, name: 'Out' },
                   { value: data.totalInEvent, name: 'Concert' },
                   { value: data.totalInCamping, name: 'Camping' },
                 ],

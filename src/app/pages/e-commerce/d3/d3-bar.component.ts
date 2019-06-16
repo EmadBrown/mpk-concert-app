@@ -23,8 +23,8 @@ export class D3BarComponent implements OnDestroy, OnInit {
   showLegend = true;
   showXAxis = true;
   showYAxis = true;
-  xAxisLabel = 'Country';
-  yAxisLabel = 'Population';
+  xAxisLabel = 'shops';
+  yAxisLabel = 'sales';
   colorScheme: any;
   themeSubscription: any;
 
@@ -41,9 +41,9 @@ export class D3BarComponent implements OnDestroy, OnInit {
     this.getPromise().then(() =>
       this.getdata.currentData.subscribe(data => {
         this.results = [
-          { name: 'Souvenir Shop', value: data.totalSouvenirShop },
-          { name: 'Sale Shop', value: data.totalSaleShops },
-          { name: 'Loan Shop', value: data.totalLoanShop },
+          { name: 'Souvenir Shop', value: '€ ' + data.totalSouvenirShop },
+          { name: 'Food & Drinks Shop', value: '€ ' + data.totalSaleShops },
+          { name: 'Loan Shop', value: '€ ' + data.totalLoanShop },
         ]
       }));
   }

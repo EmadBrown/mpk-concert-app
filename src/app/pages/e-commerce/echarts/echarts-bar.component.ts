@@ -90,7 +90,7 @@ export class EchartsBarComponent implements AfterViewInit, OnDestroy, OnInit {
           ],
           series: [
             {
-              name: 'Score',
+              name: 'Euro',
               type: 'bar',
               barWidth: '60%',
               data: salesItemTotal,
